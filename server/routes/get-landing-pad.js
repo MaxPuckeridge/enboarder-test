@@ -18,6 +18,7 @@ const getLandingPad = async (req, res) => {
 
   const { id, full_name, status, location } = document;
 
+  res.header('Access-Control-Allow-Origin', '*');
   res.status(200);
   res.send({
     id,

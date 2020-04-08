@@ -1,7 +1,6 @@
 const initialState = {
   currentContext: 'NONE',
   launchPadId: null,
-  consoleOutput: '',
 };
 
 export default function (state = initialState, action) {

@@ -13,9 +13,10 @@ const getCapsules = async (req, res) => {
     return;
   }
 
+  res.header('Access-Control-Allow-Origin', '*');
   res.status(200);
-  res.send({
-    ...result.data,
+  res.json({
+    result: result.data,
   });
 };
 
