@@ -35,10 +35,10 @@ const makeCapsuleRequest = (setConsoleText) => {
     });
 };
 
-const makeLandingPadRequest = (setConsoleText, launchPadId) => {
+const makeLandingPadRequest = (setConsoleText, landingPadId) => {
   setConsoleText('Fetching...');
 
-  fetch(`http://localhost:4000/landing-pad/${launchPadId}`)
+  fetch(`http://localhost:4000/landing-pad/${landingPadId}`)
     .then((response) => response.json())
     .then((data) => {
       const pretty = JSON.stringify(data, null, 2);
@@ -51,9 +51,9 @@ const makeLandingPadRequest = (setConsoleText, launchPadId) => {
 
 const Console = () => {
   const currentContext = useSelector((state) => state.currentContext);
-  const launchPadId = useSelector((state) => state.launchPadId);
+  const landingPadId = useSelector((state) => state.landingPadId);
 
-  const [consoleText, setConsoleText] = useState(null);
+  const [consoleText, setConsoleText] = useState('');
 
   useEffect(() => {
     console.log(currentContext);
@@ -64,13 +64,13 @@ const Console = () => {
         break;
 
       case 'LANDING_PAD':
-        makeLandingPadRequest(setConsoleText, launchPadId);
+        makeLandingPadRequest(setConsoleText, landingPadId);
         break;
 
       default:
         setConsoleText('');
     }
-  }, [currentContext, launchPadId]);
+  }, [currentContext, landingPadId]);
 
   return (
     <ConsoleContainer>

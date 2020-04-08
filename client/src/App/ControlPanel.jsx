@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
@@ -51,14 +51,20 @@ const TextInput = styled.input`
 const ControlPanel = () => {
   const dispatch = useDispatch();
 
+  const [landingPadId, setLandingId] = useState('');
+
   const onClickCapsules = useCallback(
     () => dispatch({ type: 'SHOW_CAPSULES' }),
     [dispatch]
   );
 
+  const handleChange = (event) => {
+    setLandingId(event.target.value);
+  };
+
   const onClickLandingPad = useCallback(
-    () => dispatch({ type: 'SHOW_LANDING_PAD', landingPadId: 'LZ-2' }),
-    [dispatch]
+    () => dispatch({ type: 'SHOW_LANDING_PAD', landingPadId }),
+    [dispatch, landingPadId]
   );
 
   return (
@@ -70,7 +76,7 @@ const ControlPanel = () => {
         <Rocket />
       </ControlContainer>
       <ControlContainer>
-        <TextInput />
+        <TextInput type="string" value={landingPadId} onChange={handleChange} />
         <Button onClick={onClickLandingPad}>Landing Pad</Button>
       </ControlContainer>
     </ControlPanelContainer>

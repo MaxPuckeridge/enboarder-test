@@ -1,6 +1,6 @@
 const initialState = {
   currentContext: 'NONE',
-  launchPadId: null,
+  landingPadId: null,
 };
 
 export default function (state = initialState, action) {
@@ -9,7 +9,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         currentContext: 'LANDING_PAD',
-        launchPadId: action.landingPadId,
+        landingPadId: action.landingPadId,
       };
 
     case 'SHOW_CAPSULES':
