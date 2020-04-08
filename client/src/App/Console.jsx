@@ -7,10 +7,17 @@ const ConsoleContainer = styled.div`
   background-color: #eee;
   flex: 2;
   padding: 10px;
+  overflow-y: scroll;
+  word-break: break-word;
+  font-size: 14px;
 
   @media only screen and (max-width: 600px) {
     margin: 10px;
     margin-right: 0;
+  }
+
+  pre {
+    margin: 0;
   }
 `;
 
@@ -20,10 +27,10 @@ const makeCapsuleRequest = (setConsoleText) => {
   fetch('http://localhost:4000/capsules')
     .then((response) => response.json())
     .then((data) => {
-      setConsoleText(JSON.stringify(data));
+      const pretty = JSON.stringify(data, null, 2);
+      setConsoleText(pretty);
     })
     .catch((error) => {
-      console.log(error);
       setConsoleText('Error!');
     });
 };
@@ -34,10 +41,10 @@ const makeLandingPadRequest = (setConsoleText, launchPadId) => {
   fetch(`http://localhost:4000/landing-pad/${launchPadId}`)
     .then((response) => response.json())
     .then((data) => {
-      setConsoleText(JSON.stringify(data));
+      const pretty = JSON.stringify(data, null, 2);
+      setConsoleText(pretty);
     })
     .catch((error) => {
-      console.log(error);
       setConsoleText('Error!');
     });
 };
@@ -65,7 +72,11 @@ const Console = () => {
     }
   }, [currentContext, launchPadId]);
 
-  return <ConsoleContainer>{consoleText}</ConsoleContainer>;
+  return (
+    <ConsoleContainer>
+      <pre>{consoleText}</pre>
+    </ConsoleContainer>
+  );
 };
 
 export default Console;
