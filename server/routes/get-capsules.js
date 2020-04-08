@@ -19,4 +19,4 @@ const getCapsules = async (req, res) => {
   });
 };
 
-module.exports = { getCapsules };
+module.exports = getCapsules;
