@@ -16,9 +16,14 @@ const getLandingPad = async (req, res) => {
     return;
   }
 
+  const { id, full_name, status, location } = document;
+
   res.status(200);
   res.send({
-    ...document,
+    id,
+    full_name,
+    status,
+    location,
   });
 };
 
