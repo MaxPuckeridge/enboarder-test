@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+
 import Rocket from '../assets/rocket.svg';
 
 const ControlPanelContainer = styled.div`
@@ -47,17 +49,29 @@ const TextInput = styled.input`
 `;
 
 const ControlPanel = () => {
+  const dispatch = useDispatch();
+
+  const onClickCapsules = useCallback(
+    () => dispatch({ type: 'SHOW_CAPSULES' }),
+    [dispatch]
+  );
+
+  const onClickLandingPad = useCallback(
+    () => dispatch({ type: 'SHOW_LANDING_PAD', landingPadId: 'LZ-2' }),
+    [dispatch]
+  );
+
   return (
     <ControlPanelContainer>
       <ControlContainer>
-        <Button>Capsules</Button>
+        <Button onClick={onClickCapsules}>Capsules</Button>
       </ControlContainer>
       <ControlContainer>
         <Rocket />
       </ControlContainer>
       <ControlContainer>
         <TextInput />
-        <Button>Landing Page</Button>
+        <Button onClick={onClickLandingPad}>Landing Pad</Button>
       </ControlContainer>
     </ControlPanelContainer>
   );
