@@ -1,17 +1,21 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import GlobalStyle from '../theme';
-import { Application } from './styles';
+import { Application, MainContent, Console, ControlPanel } from './styles';
 import Rocket from '../assets/rocket.svg';
 
 const App = () => (
-    <>
-        <Application >
-            <Rocket />
-            <span>"Space isn't remote at all. It's only an hour's drive away, if your car could go straight upwards."</span>
-        </Application>
-        <GlobalStyle />
-    </>
+  <>
+    <Application>
+      <MainContent>
+        <Console>Hi!</Console>
+        <ControlPanel>
+          <Rocket />
+        </ControlPanel>
+      </MainContent>
+    </Application>
+    <GlobalStyle />
+  </>
 );
 
 export default hot(App);
