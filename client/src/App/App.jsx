@@ -27,7 +27,7 @@ const MainContent = styled.div`
   border-radius: 6px;
   padding: 10px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 950px) {
     height: 100%;
     width: 100%;
     border-radius: 0;

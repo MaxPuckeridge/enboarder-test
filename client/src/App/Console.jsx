@@ -11,7 +11,7 @@ const ConsoleContainer = styled.div`
   word-break: break-word;
   font-size: 14px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 950px) {
     margin: 10px;
     margin-right: 0;
   }

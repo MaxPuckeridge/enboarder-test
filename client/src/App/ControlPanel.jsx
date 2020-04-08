@@ -15,7 +15,7 @@ const ControlPanelContainer = styled.div`
   flex-direction: row;
   align-items: center;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 950px) {
     margin: 10px;
     flex-direction: column;
   }
@@ -30,7 +30,7 @@ const ControlContainer = styled.div`
   justify-content: center;
   height: 100%;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 950px) {
     flex-direction: column;
     height: auto;
     width: 100%;
@@ -41,6 +41,11 @@ const Button = styled.button`
   padding: 8px 16px;
   margin: 10px;
   border-radius: 6px;
+  cursor: pointer;
+
+  :disabled {
+    background-color: #ffb5b5;
+  }
 `;
 
 const TextInput = styled.input`
