@@ -5,6 +5,8 @@ const LANDING_PAD_ENDPOINT = (landingPadId) =>
   `https://api.spacexdata.com/v3/landpads/${landingPadId}`;
 
 const getLandingPad = async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
   const { landingPadId } = req.params;
 
   let document;
@@ -18,7 +20,6 @@ const getLandingPad = async (req, res) => {
 
   const { id, full_name, status, location } = document;
 
-  res.header('Access-Control-Allow-Origin', '*');
   res.status(200);
   res.send({
     id,

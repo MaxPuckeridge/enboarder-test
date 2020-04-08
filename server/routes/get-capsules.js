@@ -4,6 +4,8 @@ const UPCOMING_ENDPOINT =
   'http://api.spacexdata.com/v3/launches/upcoming?sort=launch_date_utc&order=asc';
 
 const getCapsules = async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
   let result;
   try {
     result = await axios.get(UPCOMING_ENDPOINT);
@@ -13,7 +15,6 @@ const getCapsules = async (req, res) => {
     return;
   }
 
-  res.header('Access-Control-Allow-Origin', '*');
   res.status(200);
   res.json({
     result: result.data,
