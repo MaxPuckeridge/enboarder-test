@@ -52,6 +52,7 @@ const ControlPanel = () => {
   const dispatch = useDispatch();
 
   const [landingPadId, setLandingId] = useState('');
+  const [isValidInput, setIsValidInput] = useState(false);
 
   const onClickCapsules = useCallback(
     () => dispatch({ type: 'SHOW_CAPSULES' }),
@@ -59,7 +60,11 @@ const ControlPanel = () => {
   );
 
   const handleChange = (event) => {
-    setLandingId(event.target.value);
+    const input = event.target.value;
+    const isValid = !!input && !new RegExp('[#$%&]').test(input);
+
+    setIsValidInput(isValid);
+    setLandingId(input);
   };
 
   const onClickLandingPad = useCallback(
@@ -77,7 +82,9 @@ const ControlPanel = () => {
       </ControlContainer>
       <ControlContainer>
         <TextInput type="string" value={landingPadId} onChange={handleChange} />
-        <Button onClick={onClickLandingPad}>Landing Pad</Button>
+        <Button onClick={onClickLandingPad} disabled={!isValidInput}>
+          Landing Pad
+        </Button>
       </ControlContainer>
     </ControlPanelContainer>
   );
